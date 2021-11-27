@@ -2,9 +2,10 @@ import '../App.css';
 import React, {useState} from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import lexicalAnalysis from '../utils/lexicalAnalysis'
 
 
-function FileUploaderEditor() {
+function FileUploaderEditor(props) {
   const [code, setCode] = useState("")
 
   let fileReader;
@@ -15,7 +16,7 @@ function FileUploaderEditor() {
 
   const handleFileRead = (e) => {
     const content = fileReader.result;
-    console.log(content);
+    // console.log(content);
     setCode(content)
   }
   
@@ -27,7 +28,7 @@ function FileUploaderEditor() {
   
   return (
     <div className="fileupload">
-    <input type="file" onChange={ e => handleFileChosen(e.target.files[0])
+    <input type="file" accept = ".lol" onChange={ e => handleFileChosen(e.target.files[0])
       } />
       <TextField
         id="filled-multiline-flexible"
@@ -39,7 +40,14 @@ function FileUploaderEditor() {
         onChange={handleChange}
         variant="filled"
       />
-      <Button variant="contained" className = "executeButton">EXECUTE</Button>
+      <Button 
+        variant="contained" 
+        className = "executeButton"
+        onClick = {() => {
+          const test = lexicalAnalysis(code);
+          props.setLexemes(test)
+        }} 
+      >EXECUTE</Button>
     </div>
   );
 }
