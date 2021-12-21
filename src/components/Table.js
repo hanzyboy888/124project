@@ -24,7 +24,7 @@ export default function ColumnGroupingTable(props) {
           <TableHead>
             <TableRow>
               <TableCell align="center" colSpan={2}>
-                Lexemes
+                {props.title}
               </TableCell>
             </TableRow>
             <TableRow>

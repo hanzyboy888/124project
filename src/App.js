@@ -11,6 +11,10 @@ function App() {
     { id: 'lexeme', label: 'Lexeme' },
     { id: 'classification', label: 'Classification' },
   ];
+  const symbolTableHeader = [
+    { id: 'identifier', label: 'Identifier'},
+    { id: 'value', label: 'Value'}
+  ]
   return (
     <div className ="main">
       <div className = "upper">
@@ -20,8 +24,8 @@ function App() {
       </Box>
       </div>
       <div className = "lower">
-        <Table renderData = {lexemes} columns = {lexemeTableHeader}/>
-        <Table />
+        <Table renderData = {lexemes} columns = {lexemeTableHeader} title = {"Lexemes"}/>
+        <Table title = {"Symbol"} columns = {symbolTableHeader}/>
       </div>
     </div>
   );

@@ -7,21 +7,32 @@ const lexicalAnalysis = (code) =>{
             return lineOfCode.trim()
         }
         return lineOfCode.slice(0, -1).trim()
-
-    });
-    let lexemes = []
+    })
+    //iterate
+    //split on spaces
+    //trim
+    let words = []
     for (let i = 0; i < cleanedLinesOfCode.length; i++){
+        const wordArray = cleanedLinesOfCode[i].split(" ")
+        for (let j = 0; j < wordArray.length; j++){
+            words.push(wordArray[j])   
+        }
+    }
+    
+    let lexemes = []
+    for (let i = 0; i < words.length; i++){
         for (let j = 0; j < keywords.length; j++){
             // const pattern = /keywords[j].regex/
             // console.log(pattern)
             // console.log(cleanedLinesOfCode[i], keywords[j].regex)
-            let result = keywords[j].regex.test(cleanedLinesOfCode[i])
+            let result = keywords[j].regex.test(words[i])
             if (result) {
                 const object = {
-                    lexeme: cleanedLinesOfCode[i], 
+                    lexeme: words[i], 
                     classification: keywords[j].classification
                 }
                 lexemes.push(object);
+                break
                 // console.log("lexemes:", cleanedLinesOfCode[i], "classification:", keywords[j].classification)
             }
             // console.log(result)
