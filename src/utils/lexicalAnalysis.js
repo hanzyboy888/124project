@@ -28,7 +28,7 @@ const lexicalAnalysis = (code) =>{
             let result = keywords[j].regex.test(words[i])
             if (result) {
                 const object = {
-                    lexeme: words[i], 
+                    label: words[i], 
                     classification: keywords[j].classification
                 }
                 lexemes.push(object);

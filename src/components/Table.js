@@ -8,11 +8,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import '../App.css';
 
-// const columns = [
-//   { id: 'lexeme', label: 'Lexeme' },
-//   { id: 'classification', label: 'Classification' },
-// ];
-
 export default function ColumnGroupingTable(props) {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -31,8 +26,8 @@ export default function ColumnGroupingTable(props) {
               {props.columns?.map((column) => (
                 <TableCell
                   key={column.id}
-                  // align={column.align}
-                  // style={{ top: 57, minWidth: column.minWidth }}
+                  align={column.align}
+                  style={{ top: 57, minWidth: column.minWidth }}
                 >
                   {column.label}
                 </TableCell>
@@ -41,13 +36,13 @@ export default function ColumnGroupingTable(props) {
           </TableHead>
           <TableBody>
             <TableRow key={0}>
-              {props.renderData?.map((lexeme, index) => (
+              {props.renderData?.map((data, index) => (
                 <div key = {index}>
                   <TableCell colSpan={1}>
-                    {lexeme.lexeme}
+                    {data.label}
                   </TableCell>
                   <TableCell colSpan={1}>
-                    {lexeme.classification}
+                    {data.classification}
                   </TableCell>
                 </div>
               ))}
