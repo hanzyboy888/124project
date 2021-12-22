@@ -8,39 +8,49 @@ const lexicalAnalysis = (code) =>{
         }
         return lineOfCode.slice(0, -1).trim()
     })
-    //iterate
-    //split on spaces
-    //trim
     let words = []
     for (let i = 0; i < cleanedLinesOfCode.length; i++){
+        // if cleanedLinesOfCode[]
         const wordArray = cleanedLinesOfCode[i].split(" ")
         for (let j = 0; j < wordArray.length; j++){
-            words.push(wordArray[j])   
+            words.push(wordArray[j])
         }
     }
     
     let lexemes = []
+    let varAssignFlag = false
+    let wordsHolder = ""
     for (let i = 0; i < words.length; i++){
-        for (let j = 0; j < keywords.length; j++){
-            // const pattern = /keywords[j].regex/
-            // console.log(pattern)
-            // console.log(cleanedLinesOfCode[i], keywords[j].regex)
-            let result = keywords[j].regex.test(words[i])
-            if (result) {
+        if (words[i] === "I") {
+            if (words[i+1] === "HAS" && words[i+2] === "A"){
+                varAssignFlag = true
+                wordsHolder = wordsHolder.concat(words[i], " ", words[i+1], " ", words[i+2])
                 const object = {
-                    label: words[i], 
-                    classification: keywords[j].classification
+                    label: wordsHolder, 
+                    classification: "Variable Declaration"
                 }
-                lexemes.push(object);
-                break
-                // console.log("lexemes:", cleanedLinesOfCode[i], "classification:", keywords[j].classification)
+                console.log(words[i], words[i+1], words[i+2], wordsHolder)
+                lexemes.push(object)
             }
-            // console.log(result)
+        }
+        if (!varAssignFlag) {
+            for (let j = 0; j < keywords.length; j++){
+                let result = keywords[j].regex.test(words[i])
+                if (result) {
+                    const object = {
+                        label: words[i], 
+                        classification: keywords[j].classification
+                    }
+                    lexemes.push(object);
+                    break
+                }
+            }
+        }
+        if (words[i] === "A" && varAssignFlag) {
+            varAssignFlag = false
         }
     }
     return lexemes
-    
-
 }
 
 export default lexicalAnalysis

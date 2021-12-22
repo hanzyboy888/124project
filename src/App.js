@@ -4,7 +4,6 @@ import FileUploaderEditor from './components/FileUploaderEditor';
 import Box from '@mui/material/Box';
 import Table from './components/Table';
 
-
 function App() {
   const [lexemes, setLexemes] = useState([])
   const lexemeTableHeader = [
