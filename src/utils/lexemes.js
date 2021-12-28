@@ -43,6 +43,8 @@ const keywords = [
     {element: 'YARN Literal', regex: /^\"([a-zA-Z0-9] | [^a-zA-Z0-9] | :[\"$ | >$ | o$ | :$ |)$])*\"$/, classification: 'YARN Literal'},
     {element: 'TROOF Literal', regex: /(^WIN$ | ^FAIL$)/, classification: 'TROOF Literal'},
     {element: 'TYPE Literal', regex: /(^NOOB$ | NUMBAR$ | ^NUMBR$ | ^YARN$ | ^TROOF$ | ^TYPE$)/, classification: 'TYPE Literal'},
+    {element: 'AN', regex: /^AN$/, classification: 'Operand Separator'},
+
 
 ]
 
