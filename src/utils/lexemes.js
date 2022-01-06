@@ -39,7 +39,7 @@ const keywords = [
     {element: 'Function Identifier', regex: /[a-zA-Z]+([a-zA-Z0-9\_])*/, classification: 'Function Identifier'},
     {element: 'Loop Identifier', regex: /[a-zA-Z]+([a-zA-Z0-9\_])*/, classification: 'Loop Identifier'},
     {element: 'NUMBR Literal', regex: /^[-]?\d+$/, classification: 'NUMBR Literal'},
-    {element: 'NUMBAR Literal', regex: /(-[1-9])? | [0-9]*\.[0-9]*/, classification: 'NUMBAR Literal'},
+    {element: 'NUMBAR Literal', regex: /(-[1-9])? |[0-9]*\.[0-9]*/, classification: 'NUMBAR Literal'},
     {element: 'YARN Literal', regex: /^\"([a-zA-Z0-9] | [^a-zA-Z0-9] | :[\"$ | >$ | o$ | :$ |)$])*\"$/, classification: 'YARN Literal'},
     {element: 'TROOF Literal', regex: /(^WIN$ | ^FAIL$)/, classification: 'TROOF Literal'},
     {element: 'TYPE Literal', regex: /(^NOOB$ | NUMBAR$ | ^NUMBR$ | ^YARN$ | ^TROOF$ | ^TYPE$)/, classification: 'TYPE Literal'},

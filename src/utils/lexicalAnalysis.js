@@ -19,6 +19,7 @@ const lexicalAnalysis = (code) =>{
     let boolFlag = false
     let comparisonFlag = false
     let multCommentAssignFlag = false
+    let boolLiteral = false
 
 
     for (let i = 0; i < words.length; i++){
@@ -101,19 +102,13 @@ const lexicalAnalysis = (code) =>{
             lexemes.push(object)
             multCommentAssignFlag = true
         }
-
-
-        
-        if (!varAssignFlag && !yarnAssignFlag && !commentAssignFlag && !arithFlag && !anFlag && !boolFlag && !comparisonFlag && !multCommentAssignFlag) {
-            // console.log(words[i])
+                
+        if (!varAssignFlag && !yarnAssignFlag && !commentAssignFlag && !arithFlag && !anFlag && !boolFlag && !comparisonFlag && !multCommentAssignFlag && !boolLiteral) {
             if (words[i].charAt(0) === "\t"){
                 words[i] = words[i].slice(1)
             }
-            // console.log(words[i])
             for (let j = 0; j < keywords.length; j++){
                 let result = keywords[j].regex.test(words[i])
-                // console.log(words[i])
-                // console.log(result, words[i], keywords[j].regex)
                 if (result) {
                     const object = {
                         label: words[i], 
@@ -141,12 +136,8 @@ const lexicalAnalysis = (code) =>{
         }
         if (commentAssignFlag && words[i] !== "BTW") {
             wordsHolder = wordsHolder.concat(words[i], " ")
-            // console.log(words[i])
-            console.log("words", words)
 
-            
             if (words[i+1]?.charAt(0) === "\t" || words[i+1] === "BTW") {
-                // console.log(words[i])
 
                 const object = {
                     label: wordsHolder, 

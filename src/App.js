@@ -1,11 +1,13 @@
 import './App.css';
 import React, {useState} from 'react';
 import FileUploaderEditor from './components/FileUploaderEditor';
-import Box from '@mui/material/Box';
 import Table from './components/Table';
+import Terminal from './components/Terminal';
 
 function App() {
   const [lexemes, setLexemes] = useState([])
+  const [symbolTable, setSymbolTable] = useState([])
+  const [output, setOutput] = useState("")
   const lexemeTableHeader = [
     { id: 'lexeme', label: 'Lexeme' },
     { id: 'classification', label: 'Classification' },
@@ -17,14 +19,12 @@ function App() {
   return (
     <div className ="main">
       <div className = "upper">
-        <FileUploaderEditor setLexemes = {setLexemes}/>
-        <Box className = "outputBox" >
-          Hello World
-      </Box>
+        <FileUploaderEditor setLexemes = {setLexemes} setOutput = {setOutput}/>
+        <Terminal classname = "terminal" renderData = {output}/>
       </div>
       <div className = "lower">
         <Table renderData = {lexemes} columns = {lexemeTableHeader} title = {"Lexemes"}/>
-        <Table title = {"Symbol"} columns = {symbolTableHeader}/>
+        <Table renderData = {symbolTable} title = {"Symbol"} columns = {symbolTableHeader}/>
       </div>
     </div>
   );

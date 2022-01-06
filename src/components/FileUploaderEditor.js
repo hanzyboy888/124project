@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import lexicalAnalysis from '../utils/lexicalAnalysis'
+import symbolTable from '../utils/symbolTable';
 
 
 function FileUploaderEditor(props) {
@@ -16,7 +17,6 @@ function FileUploaderEditor(props) {
 
   const handleFileRead = (e) => {
     const content = fileReader.result;
-    // console.log(content);
     setCode(content)
   }
   
@@ -32,7 +32,7 @@ function FileUploaderEditor(props) {
       } />
       <TextField
         id="filled-multiline-flexible"
-        label="editor"
+        label=""
         multiline
         minRows={20}
         maxRows={20}
@@ -45,7 +45,9 @@ function FileUploaderEditor(props) {
         className = "executeButton"
         onClick = {() => {
           const test = lexicalAnalysis(code);
+          const test1 = symbolTable(test)
           props.setLexemes(test)
+          props.setOutput(test1[1])
         }} 
       >EXECUTE</Button>
     </div>
