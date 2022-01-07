@@ -1,5 +1,5 @@
 const symbolTable = (lexemes) => {
-    
+
     let symbolTable = {}
     let outputs = ""
 
@@ -28,7 +28,7 @@ const symbolTable = (lexemes) => {
             outputs += output + "\n"
         }
     }
-    // console.log(symbolTable)
+    console.log(symbolTable)
     return [symbolTable, outputs]
 }
 
