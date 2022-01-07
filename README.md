@@ -1,6 +1,6 @@
+### `npm install`
 
-
-
+To download the packages and dependencies needed to run the program.
 
 ### `npm start`
 
